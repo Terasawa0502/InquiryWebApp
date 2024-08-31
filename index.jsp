@@ -10,7 +10,7 @@
 
 <body>
     <h1>お問い合わせフォームへようこそ!</h1>
-    <a href="<%= request.getContextPath() %>/forms">お問い合わせフォーム</a>
+    <a href="<%= request.getContextPath() %>/form">お問い合わせフォーム</a>
 </body>
 
 </html>
