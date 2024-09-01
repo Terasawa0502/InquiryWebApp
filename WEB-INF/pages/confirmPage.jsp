@@ -1,4 +1,6 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="java.util.ArrayList" %>
 
 <!DOCTYPE html>
 <html>
@@ -30,7 +32,21 @@
 	    		<td>${message}</td>
 	    	</tr>
 	    </table>
-	    <button onclick="location.href='<%= request.getContextPath() %>/complete';">確定</button>
-	    <button onclick="history.back">キャンセル</button>
+	    <%
+	    ArrayList<String> errorList = (ArrayList<String>) request.getAttribute("errorList");
+	    String disableConfirm = (errorList != null) ? "disabled" : "";
+	    %>
+	    <p>
+	    <button onclick="location.href='<%= request.getContextPath() %>/complete';"<%= disableConfirm %>>確定</button>
+	    <button onclick="history.back();">キャンセル</button>
+	    </p>
+	    <%
+	    if (errorList != null) {
+	    	for (String errorMessage : errorList) {
+	    		out.println("<font color=\"red\">" + errorMessage + "</font><br>");
+	    	}
+	    }
+	    %>
+	    
 	</body>
 </html>
